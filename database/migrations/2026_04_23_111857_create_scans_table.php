@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Popularity;
+use App\Enums\ScanStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('job_id')->nullable()->index();
-            $table->enum('status', ['pending', 'processing', 'done', 'failed'])->default('pending');
+            $table->enum('status', array_column(ScanStatus::cases(), 'value'))->default(ScanStatus::Pending->value);
 
             $table->string('mood')->nullable();
             $table->string('vibe')->nullable();
@@ -24,7 +26,7 @@ return new class extends Migration
             $table->json('similar_artists')->nullable();
             $table->json('similar_tracks')->nullable();
             $table->string('instruments')->nullable();
-            $table->enum('popularity', ['any', 'mainstream', 'underground', 'obscure'])->default('any');
+            $table->enum('popularity', array_column(Popularity::cases(), 'value'))->default(Popularity::Any->value);
             $table->text('description')->nullable();
 
             $table->text('ai_prompt')->nullable();

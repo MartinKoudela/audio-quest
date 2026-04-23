@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\Popularity;
+use App\Enums\ScanStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -29,6 +31,8 @@ class Scan extends Model
     ];
 
     protected $casts = [
+        'status'          => ScanStatus::class,
+        'popularity'      => Popularity::class,
         'similar_artists' => 'array',
         'similar_tracks'  => 'array',
         'result'          => 'array',
