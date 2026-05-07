@@ -9,69 +9,64 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-[#080808] text-[#fafafa]">
+<body class="min-h-screen flex flex-col bg-[#080808] bg-cover bg-center bg-no-repeat"
+      style="background-image: url('{{ asset('background.png') }}');">
+<nav class="flex items-center justify-between px-8 py-5 border-b border-white/10 backdrop-blur-md">
+    <a href="/" class="text-white font-semibold tracking-tight text-lg">AudioQuest</a>
+    <a href="/signup" class="text-gray-400 text-sm hover:text-white transition-colors">
+        Create an account
+    </a>
+</nav>
 
-    <nav class="flex items-center justify-between px-8 py-5 border-b border-[#1a1a1a]">
-        <a href="/" class="text-white font-semibold tracking-tight text-lg">AudioQuest</a>
-        <a href="/signup" class="text-[#737373] text-sm hover:text-white transition-colors">
-            Create an account
-        </a>
-    </nav>
+<main class="flex-1 flex items-center justify-center px-4 py-16">
+    <div class="relative backdrop-blur-2xl bg-white/10 border border-white/20 rounded-[2.5rem] p-10 w-full max-w-sm shadow-2xl text-center">
 
-    <main class="flex-1 flex items-center justify-center px-4 py-16">
-        <div class="w-full max-w-sm">
+        <h1 class="text-2xl font-semibold text-white tracking-tight mb-2">Log in</h1>
+        <p class="text-gray-300 text-sm mb-8">Enter your credentials to continue.</p>
 
-            <h1 class="text-2xl font-semibold tracking-tight mb-1">Log in</h1>
-            <p class="text-[#737373] text-sm mb-8">Enter your credentials to continue.</p>
+        @if ($errors->any())
+            <div class="mb-6 px-4 py-3 rounded-2xl bg-red-500/20 border border-red-500/50 text-red-200 text-sm">
+                {{ $errors->first() }}
+            </div>
+        @endif
 
-            @if ($errors->any())
-                <div class="mb-6 px-4 py-3 rounded-md bg-red-950 border border-red-900 text-red-400 text-sm">
-                    {{ $errors->first() }}
-                </div>
-            @endif
+        <form method="POST" action="/login" class="space-y-4">
+            @csrf
 
-            <form method="POST" action="/login" class="space-y-5">
-                @csrf
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value="{{ old('email') }}"
+                required
+                autocomplete="email"
+                class="w-full px-6 py-3.5 rounded-full bg-white/15 border border-white/10 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-teal-400/50 transition-all text-sm"
+            >
 
-                <div class="space-y-1.5">
-                    <label class="text-sm text-[#a3a3a3]">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value="{{ old('email') }}"
-                        required
-                        autocomplete="email"
-                        class="w-full px-3.5 py-2.5 rounded-md bg-[#111111] border border-[#262626] text-white placeholder-[#404040] text-sm outline-none focus:border-[#525252] transition-colors"
-                    >
-                </div>
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+                autocomplete="current-password"
+                class="w-full px-6 py-3.5 rounded-full bg-white/15 border border-white/10 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-teal-400/50 transition-all text-sm"
+            >
 
-                <div class="space-y-1.5">
-                    <label class="text-sm text-[#a3a3a3]">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        required
-                        autocomplete="current-password"
-                        class="w-full px-3.5 py-2.5 rounded-md bg-[#111111] border border-[#262626] text-white placeholder-[#404040] text-sm outline-none focus:border-[#525252] transition-colors"
-                    >
-                </div>
+            <button
+                type="submit"
+                class="w-full py-3.5 rounded-full bg-[#063C50] hover:bg-[#0a4d66] text-white font-bold tracking-widest transition-all active:scale-95 shadow-lg mt-2 uppercase text-xs"
+            >
+                Login
+            </button>
+        </form>
 
-                <button
-                    type="submit"
-                    class="w-full py-2.5 rounded-md bg-white text-black font-medium text-sm hover:bg-[#e5e5e5] transition-colors mt-2"
-                >
-                    Log in
-                </button>
-
-            </form>
-
-            <p class="text-center text-sm text-[#737373] mt-6">
-                Don't have an account?
-                <a href="/signup" class="text-white hover:underline ml-1">Sign up</a>
-            </p>
-
+        <div class="flex justify-between mt-6 px-2 text-xs text-gray-400">
+            <a href="#" class="hover:text-white transition-colors">Forgot password?</a>
+            <a href="/signup" class="text-white hover:underline">Sign up</a>
         </div>
-    </main>
+
+    </div>
+</main>
 
 </body>
 </html>
