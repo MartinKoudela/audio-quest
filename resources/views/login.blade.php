@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AudioQuest</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen flex items-center justify-center bg-cover bg-center"
-      style="background-image: url('background.png');">
+      style="background-image: url({{ asset('background.png') }})">
 
 <div class="relative backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl p-8 w-[350px] shadow-xl">
 
