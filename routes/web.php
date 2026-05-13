@@ -14,3 +14,5 @@ Route::get('/signup', [AuthController::class, 'showSignup'])->name('register');
 Route::post('/signup', [AuthController::class, 'signup']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard',function () {return view('dashboard');})->name('dashboard');
