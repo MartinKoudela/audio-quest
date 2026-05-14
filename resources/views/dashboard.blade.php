@@ -18,7 +18,7 @@
 <aside class="w-64 flex flex-col justify-between p-6 border-r border-gray-800">
     <nav class="space-y-6">
         <div class="space-y-4">
-            <a href="#" class="flex items-center space-x-3 text-lg font-medium sidebar-item p-2 rounded-lg transition">
+            <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 text-lg font-medium sidebar-item p-2 rounded-lg transition">
                 <span>New Chat</span>
             </a>
             <a href="#" class="flex items-center space-x-3 text-lg font-medium sidebar-item p-2 rounded-lg transition text-gray-400 hover:text-white">
@@ -30,7 +30,7 @@
         </div>
     </nav>
     <div class="mt-auto">
-        <a href="#" class="flex items-center space-x-3 text-lg font-medium sidebar-item p-2 rounded-lg transition text-white">
+        <a href="{{ route('settings') }}" class="flex items-center space-x-3 text-lg font-medium sidebar-item p-2 rounded-lg transition text-white">
             <span>Account</span>
         </a>
     </div>
