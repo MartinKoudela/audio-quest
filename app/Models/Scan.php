@@ -25,6 +25,8 @@ class Scan extends Model
         'instruments',
         'popularity',
         'description',
+        'themes',
+        'royalty_free_only',
         'ai_prompt',
         'result',
         'result_source',
@@ -33,9 +35,11 @@ class Scan extends Model
     protected $casts = [
         'status'          => ScanStatus::class,
         'popularity'      => Popularity::class,
-        'similar_artists' => 'array',
-        'similar_tracks'  => 'array',
-        'result'          => 'array',
+        'similar_artists'   => 'array',
+        'similar_tracks'    => 'array',
+        'themes'            => 'array',
+        'royalty_free_only' => 'boolean',
+        'result'            => 'array',
     ];
 
     public function user(): BelongsTo

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\ScanController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,9 @@ Route::post('/reset-password', [PasswordResetController::class, 'reset'])->name(
 Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::post('/scans', [ScanController::class, 'store'])->name('scans.store');
+    Route::get('/scans/{scan}', [ScanController::class, 'show'])->name('scans.show');
+
     Route::get('/settings', [SettingsController::class, 'show'])->name('settings');
     Route::patch('/settings', [SettingsController::class, 'update'])->name('settings.update');
     Route::patch('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password');
